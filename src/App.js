@@ -1,5 +1,5 @@
 import { useEffect, useState, useReducer } from 'react'
-import Gun from 'gun'
+import Gun from 'gun/gun'
 
 // initialize gun locally
 const gun = Gun({
@@ -32,8 +32,8 @@ export default function App() {
   // when the app loads, fetch the current messages and load them into the state
   // this also subscribes to new data as it changes and updates the local state
   useEffect(() => {
-    const messages = gun.get('chat')
-    messages.map().once(m => {
+    const messages = gun.get('chats-new')
+    messages.map().on(m => {
       console.log("🚀 ~ file: App.js ~ line 43 ~ messages.map ~ m", m)
       if (m) {
         dispatch({
@@ -47,7 +47,7 @@ export default function App() {
 
   // set a new message in gun, update the local state to reset the form field
   function saveMessage() {
-    const messages = gun.get('chat')
+    const messages = gun.get('chats-new')
     messages.set({
       name: formState.name,
       message: formState.message,
