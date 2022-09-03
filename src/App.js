@@ -32,7 +32,7 @@ export default function App() {
   // when the app loads, fetch the current messages and load them into the state
   // this also subscribes to new data as it changes and updates the local state
   useEffect(() => {
-    const messages = gun.get('messages-new')
+    const messages = gun.get('chat')
     messages.map().once(m => {
       console.log("🚀 ~ file: App.js ~ line 43 ~ messages.map ~ m", m)
       dispatch({
@@ -45,7 +45,7 @@ export default function App() {
 
   // set a new message in gun, update the local state to reset the form field
   function saveMessage() {
-    const messages = gun.get('messages-new')
+    const messages = gun.get('chat')
     messages.set({
       name: formState.name,
       message: formState.message,
