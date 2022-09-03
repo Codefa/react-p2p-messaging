@@ -4,7 +4,7 @@ import Gun from 'gun'
 // initialize gun locally
 const gun = Gun({
   peers: [
-    'http://localhost:3030/gun'
+    'https://react-p2p-messaging.herokuapp.com/gun'
   ]
 })
 
@@ -22,7 +22,7 @@ function reducer(state, message) {
 
 export default function App() {
   // the form state manages the form input for creating a new message
-    const [formState, setForm] = useState({
+  const [formState, setForm] = useState({
     name: '', message: ''
   })
 
@@ -57,7 +57,7 @@ export default function App() {
 
   // update the form state as the user types
   function onChange(e) {
-    setForm({ ...formState, [e.target.name]: e.target.value  })
+    setForm({ ...formState, [e.target.name]: e.target.value })
   }
 
   return (
