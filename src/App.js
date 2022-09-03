@@ -35,11 +35,13 @@ export default function App() {
     const messages = gun.get('chat')
     messages.map().once(m => {
       console.log("🚀 ~ file: App.js ~ line 43 ~ messages.map ~ m", m)
-      dispatch({
-        name: m.name,
-        message: m.message,
-        createdAt: m.createdAt
-      })
+      if (m) {
+        dispatch({
+          name: m.name,
+          message: m.message,
+          createdAt: m.createdAt
+        })
+      }
     })
   }, [])
 
