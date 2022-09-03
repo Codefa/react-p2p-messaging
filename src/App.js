@@ -34,6 +34,7 @@ export default function App() {
   useEffect(() => {
     const messages = gun.get('messages')
     messages.map().once(m => {
+      console.log("🚀 ~ file: App.js ~ line 43 ~ messages.map ~ m", m)
       dispatch({
         name: m.name,
         message: m.message,
