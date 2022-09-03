@@ -33,7 +33,7 @@ export default function App() {
   // this also subscribes to new data as it changes and updates the local state
   useEffect(() => {
     const messages = gun.get('messages')
-    messages.map().once(m => {
+    messages.map().on(m => {
       console.log("🚀 ~ file: App.js ~ line 43 ~ messages.map ~ m", m)
       dispatch({
         name: m.name,
